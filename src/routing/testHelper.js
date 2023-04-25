@@ -2,7 +2,7 @@
 
 const Ajv = require('ajv');
 const AjvErrors = require('ajv-errors');
-const jp = require('jsonpath');
+const jp = require('../../node_modules/jsonpath');
 const createQRouter = require('q-router');
 const {getSection} = require('./getSection');
 const logger = require('../logger');
@@ -36,7 +36,7 @@ function anyOfSingleAnswerResolver(section, questionId, answer, answerObj) {
 function mapAnswersToLookupConstants(answer) {
     const answerArray = [];
     let selectableElement = '';
-    Array.from(answer).forEach(char => {
+    Array.from(answer).forEach((char) => {
         if (char === ',' && selectableElement === '') {
             return;
         }

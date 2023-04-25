@@ -10,7 +10,7 @@ Read the docs [gauge](https://gauge.org/gauge-taiko/)
 -   clone this directory
 -   `npm install`
 
-The specs/data directory contains two file that you can use to override the default dummy email and mobile phone number
+The specs/data directory contains two files that you can use to override the default dummy email and mobile phone number
 email_recipient and sms_recipient respectively.
 
 The env/test.properties file conatins the following variables

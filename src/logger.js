@@ -1,12 +1,17 @@
 'use strict';
 
-const {format, createLogger, transports} = require('winston');
+const {format, createLogger, transports} = require('../node_modules/winston');
 
 const {combine, timestamp, label, prettyPrint} = format;
-const CATEGORY = 'TEST';
+const runBrowserTests = process.env.run_ui_tests === 'true';
+const headless = process.env.headless_chrome === 'true';
+const uiHeading = headless ? 'UI-TEST-headless' : 'UI-TEST';
+const CATEGORY = runBrowserTests ? uiHeading : 'ROUTING-TEST';
+const logLevel = process.env.log_level;
+const template = process.env.template_under_test;
 
 const logger = createLogger({
-    level: 'info',
+    level: logLevel,
     format: combine(
         label({label: CATEGORY}),
         timestamp({
@@ -14,7 +19,7 @@ const logger = createLogger({
         }),
         prettyPrint()
     ),
-    defaultMeta: {service: 'q-templates-automated-tests'},
+    defaultMeta: {template: template},
     transports: [
         //
         // - Write all logs with importance level of `error` or less to `error.log`
@@ -30,11 +35,7 @@ const logger = createLogger({
 // `${info.level}: ${info.message} JSON.stringify({ ...rest }) `
 //
 if (process.env.NODE_ENV !== 'production') {
-    logger.add(
-        new transports.Console({
-            format: format.simple()
-        })
-    );
+    logger.add(new transports.Console());
 }
 
 module.exports = logger;

@@ -2,9 +2,8 @@
 
 /* global beforeScenario, afterScenario, gauge, step */
 /* eslint no-undef: "error" */
-
 const path = require('path');
-const {v4: uuidv4} = require('uuid');
+const {v4: uuidv4} = require('../node_modules/uuid');
 const assert = require('assert');
 const createQRouter = require('q-router');
 
@@ -17,7 +16,7 @@ const {
     currentURL,
     resizeWindow,
     text
-} = require('taiko');
+} = require('../node_modules/taiko');
 const templates = require('./templateFactory');
 const {answerQuestion} = require('./routing/testHelper');
 const {answerBrowserQuestion} = require('./browser/testHelper');
@@ -40,7 +39,6 @@ beforeScenario(async () => {
     questionnaire.currentSectionId = questionnaire.routes.initial;
     if (runBrowserTests) {
         logger.info(`Running browser tests: ${runBrowserTests}`);
-        logger.info(`Running in headless mode: ${headless}`);
         logger.info(`Application entry point url: ${applicationEntryPointUrl}`);
         await openBrowser({
             headless,
@@ -112,6 +110,7 @@ step('Then the user is on page <pageId>', async function(pageId) {
             throw error;
         }
     } else {
+        logger.debug(questionnaire.id);
         assert.equal(pageId, questionnaire.currentSectionId);
     }
 });
