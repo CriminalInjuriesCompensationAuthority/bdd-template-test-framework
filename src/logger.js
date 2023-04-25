@@ -1,6 +1,6 @@
 'use strict';
 
-const {format, createLogger, transports} = require('../node_modules/winston');
+const {format, createLogger, transports} = require('winston');
 
 const {combine, timestamp, label, prettyPrint} = format;
 const runBrowserTests = process.env.run_ui_tests === 'true';

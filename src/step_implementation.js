@@ -3,7 +3,7 @@
 /* global beforeScenario, afterScenario, gauge, step */
 /* eslint no-undef: "error" */
 const path = require('path');
-const {v4: uuidv4} = require('../node_modules/uuid');
+const {v4: uuidv4} = require('uuid');
 const assert = require('assert');
 const createQRouter = require('q-router');
 

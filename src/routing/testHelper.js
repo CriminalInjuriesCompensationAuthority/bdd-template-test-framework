@@ -2,7 +2,7 @@
 
 const Ajv = require('ajv');
 const AjvErrors = require('ajv-errors');
-const jp = require('../../node_modules/jsonpath');
+const jp = require('jsonpath');
 const createQRouter = require('q-router');
 const {getSection} = require('./getSection');
 const logger = require('../logger');
