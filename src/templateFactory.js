@@ -1,6 +1,7 @@
 'use strict';
 const path = require('path');
-const applicationTemplate = require(path.join(process.cwd(), './dist/template.json'));
+// TODO fix this.... and add README.md instructions
+const applicationTemplate = require('../../../dist/template.json');
 
 const applicationTemplateAsJson = JSON.stringify(applicationTemplate);
 

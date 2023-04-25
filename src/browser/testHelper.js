@@ -1,5 +1,5 @@
 'use strict';
-const jp = require('../../node_modules/jsonpath');
+const jp = require('jsonpath');
 const {click, write, into, textBox} = require('../../node_modules/taiko');
 const {mapAnswersToLookupConstants} = require('../answerToConstantsMapper');
 const jsonTranslator = require('./getValueContextualiser');
