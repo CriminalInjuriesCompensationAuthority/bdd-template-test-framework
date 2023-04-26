@@ -16,7 +16,7 @@ const {
     currentURL,
     resizeWindow,
     text
-} = require('../node_modules/taiko');
+} = require('taiko');
 const templates = require('./templateFactory');
 const {answerQuestion} = require('./routing/testHelper');
 const {answerBrowserQuestion} = require('./browser/testHelper');
