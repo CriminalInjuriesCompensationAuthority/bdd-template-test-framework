@@ -111,3 +111,29 @@ The following steps will be parsed correctly
 
 This is the current format for entering a date as an answer to a question.
 The standard is ISO-8601 and the format is: YYYY-MM-DDTHH:mm:ss.sssZ
+
+## Creating new steps and step implementations
+
+Each step that you create must have a corresponding step implementation.
+Each implementation will generally have a browser and a routing implementation.
+Create whichever implementation types are required and test the new behaviour.
+
+### Example
+
+```
+
+-   When they answer "Yes" to question "q-applicant-has-crime-reference-number"
+
+```
+
+```
+
+step('When they answer <answer> to question <questionId>', async function(answer, questionId) {
+if (runBrowserTests) {
+await answerBrowserQuestion(questionnaire, currentBrowserTestPageId, questionId, answer);
+} else {
+answerQuestion(questionnaire, questionId, answer);
+}
+});
+
+```
